@@ -10,7 +10,7 @@ namespace ConsoleLab6_3
     {
         static void Main(string[] args)
         {
-            string Text1 = "Привет, {дом яблоко}эта{ипотека} {телефон ноутб}}}ук, красный}программа{человек{  чтобы} {само}кат} дверь}работает!";
+            string Text1 = "}Привет, {дом яблоко}эта{ипотека} {телефон ноутб}}}ук, красный}программа{человек{  чтобы} {само}кат} дверь}работает!{";
             Console.WriteLine(Text1);
             StringBuilder Massiv1 = new StringBuilder(Text1);
             int L1 = Text1.Length;
@@ -40,12 +40,20 @@ namespace ConsoleLab6_3
                     }
                     if (Massiv1[i] == '{')
                     {
+                        q = i;
                         f = true;
                         continue;
                     }
                     if (f == false)
                     {
-                        Text2 += Massiv1[i].ToString();
+                        if (i==0 && Massiv1[i] == '}')
+                        {
+                            //Ничего не делаем
+                        }
+                        else
+                        {
+                            Text2 += Massiv1[i].ToString();
+                        }
                     }
                     if (Massiv1[i] == '}' && f==true)
                     {
